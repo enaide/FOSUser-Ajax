@@ -1,0 +1,21 @@
+{# app/Resources/views/Form/fields.html.twig #}
+{% block choice_widget %}
+    {% spaceless %}
+        {% if expanded %}
+                {% for child in form %}
+
+                    <div class="i-checks" >
+
+                        <div class="icheckbox_square-green"  style="position: relative;">
+                            {{ form_widget(child) }}
+
+                        </div>
+                        <span class="text-muted"> +</span>{{ form_label(child) }}
+                    </div>
+                {% endfor %}
+        {% else %}
+            {# just let the choice widget render the select tag #}
+            {{ block('choice_widget' ) }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %} AtlanteIt | Empty Page {% endblock %}
+    </title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    {% block stylesheets %}
+
+        <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/dist/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+
+        <!-- Toastr style -->
+        <link rel="stylesheet" href="{{ asset('assets/dist/css/plugins/toastr/toastr.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('assets/dist/css/plugins/sweetalert/sweetalert.css') }}">
+
+
+        <link href="{{ asset('assets/dist/css/animate.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/dist/css/style.css')}}" rel="stylesheet">
+
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body class="{% block id '' %}">
+
+{% block body %}
+    <div>
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>
+{% endblock body %}
+
+{% block javascripts %}
+
+    <!-- Mainly scripts -->
+    <script src="{{ asset('assets/dist/js/jquery-2.1.1.js')}}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/plugins/sweetalert/sweetalert.min.js') }}"></script>
+
+{% endblock javascripts %}
+</body>
+</html>

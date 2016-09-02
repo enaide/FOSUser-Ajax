@@ -1,0 +1,20 @@
+{{ form_start(edit_form) }}
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Nombre</label>
+        <div class="col-lg-10">
+            {{ form_widget(edit_form.nombre, {'attr' : {'class' : ' form-control' }})}}
+            <span class="text-danger">
+                {{ form_errors(edit_form.nombre) }}
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Cantidad</label>
+        <div class="col-lg-10">
+            {{ form_widget(edit_form.cantidad, {'attr' : {'class' : ' form-control' }})}}
+            <span class="text-danger">
+                {{ form_errors(edit_form.cantidad) }}
+            </span>
+        </div>
+    </div>
+{{ form_end(edit_form) }}

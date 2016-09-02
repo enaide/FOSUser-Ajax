@@ -1,0 +1,6 @@
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    {#{ render(controller('UsuarioBundle:Default:dashboard')) }#}
+    {{ render(controller('UsersBundle:Default:dashboard')) }}
+{% else %}
+    {{ render(controller('FOSUserBundle:Security:login')) }}
+{% endif %}

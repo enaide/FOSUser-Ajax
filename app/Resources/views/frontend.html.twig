@@ -1,0 +1,74 @@
+{% extends '::layout.html.twig' %}
+
+{% block id ' pace-done skin-1' %}
+
+{% block body %}
+
+    <div id="wrapper">
+
+        <!-- Left side column. contains the logo and sidebar -->
+        {% block sidebar %}
+            {% include ':layout:sidebar.html.twig' %}
+        {% endblock %}
+
+        <div id="page-wrapper" class="gray-bg">
+
+            <!-- Main Header -->
+            <div class="row border-bottom"><!-- SKIN-2 va aqui -->
+                {% block header %}
+                    {% include ':layout:header.html.twig' %}
+                {% endblock %}
+            </div>
+
+            {% block page_heading %}
+                {% include ':layout:page-heading.html.twig' %}
+            {% endblock %}
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="wrapper wrapper-content animated fadeInRight">
+
+                    <!-- Your Page Content Here -->
+                    <!-- Main content -->
+                    {% block content_main %}
+
+                    {% endblock %}
+
+            </div>
+            <!-- /.content-wrapper -->
+
+            <!-- Main Footer -->
+            <div class="footer">
+                <div class="pull-right">
+                    10GB of <strong>250GB</strong> Free.
+                </div>
+                <div>
+                    <strong>Copyright</strong> Example Company &copy; 2014-2015
+                </div>
+            </div>
+            <!-- ./Main Footer -->
+
+        </div>
+    </div>
+    <!-- ./wrapper -->
+
+
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/dist/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+    <script src="{{ asset('assets/dist/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('assets/dist/js/inspinia.js')}}"></script>
+    <script src="{{ asset('assets/dist/js/plugins/pace/pace.min.js')}}"></script>
+
+    <script src="{{ asset('assets/dist/js/plugins/toastr/toastr.min.js') }}"></script>
+
+    {{ app.session.flashbag.all | flashbag | raw}}
+
+{% endblock javascripts %}

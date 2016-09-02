@@ -1,0 +1,96 @@
+{% extends 'layout.html.twig' %}
+{% block id 'gray-bg' %}
+
+{% block body %}
+    {% block fos_user_content %}
+        {% if error %}
+            <div class="alert alert-danger alert-dismissible">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <i class="icon fa fa-shield"></i>{{ error.messageKey| trans(error.messageData, 'security' ) }}
+            </div>
+        {% endif %}
+
+        <div class="loginColumns animated fadeInDown">
+            <div class="row">
+                <div class="col-md-6 md-margin-bottom-50">
+                    <h3 class="welcome-title">Welcome to Unify</h3>
+                    <p class="small font-bold">
+                        <span><i class="fa fa-circle text-success"></i> Online status</span>
+                    </p>
+                    <p class="medium">
+                        There are many variations of passages of Lorem Ipsum available, but the majority have
+                        suffered alteration in some form, by injected humour, or randomised words which don't.
+                        <br>
+                    </p>
+
+                    <p class="small font-bold">
+                        <span><i class="fa fa-circle text-info"></i> Online status</span>
+                    </p>
+                    <p class="medium">
+                        There are many variations of passages of Lorem Ipsum available, but the majority have
+                        suffered alteration in some form, by injected humour, or randomised words which don't.
+                        <br>
+                    </p>
+
+                    <p class="small font-bold">
+                        <span><i class="fa fa-circle text-danger"></i> Online status</span>
+                    </p>
+                    <p class="medium">
+                        There are many variations of passages of Lorem Ipsum available, but the majority have
+                        suffered alteration in some form, by injected humour, or randomised words which don't.
+                        <br>
+                    </p>
+
+
+
+                </div>
+                <div class="col-md-6">
+                    <div class="ibox-content">
+                        <form action="{{ path("fos_user_security_check") }}" class="m-t" role="form" method="post">
+
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                            <div class="form-group has-feedback">
+                                <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="name" required="required" />
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="password" id="password" name="_password" placeholder="Password" class="form-control" required="required" />
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </div>
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+
+                            <br>
+
+
+                            <div class="text-center">
+
+                                <input type="submit" id="_submit" name="_submit" class="btn btn-success block full-width m-b" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                                <p>- OR -</p>
+                                <button type="submit" style=" background-color: #3b5998;border-color: rgba(0, 0, 0, 0.2);color: #ffffff;"
+                                        class="btn btn-primary block full-width m-b">
+                                    <i class="fa fa-facebook"> </i> Sign in with Facebook
+                                </button>
+
+                            </div>
+                        </form>
+                        <p class="m-t">
+                            <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-md-6">
+                    Copyright Example Company
+                </div>
+                <div class="col-md-6 text-right">
+                    <small>© 2014-2015</small>
+                </div>
+            </div>
+        </div>
+
+    {% endblock fos_user_content %}
+{% endblock body %}

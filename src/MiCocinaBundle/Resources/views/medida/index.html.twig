@@ -1,0 +1,97 @@
+{% extends 'frontend.html.twig' %}
+
+
+
+{% block content_main %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Unidades de medidas </h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="footable-sortable">{{ knp_pagination_sortable(medidas, 'Nombre ', 'm.nombre') }} <i class="fa fa-sort"></i></th>
+                                <th class="footable-sortable">{{ knp_pagination_sortable(medidas, 'Cantidad ', 'm.cantidad') }} <i class="fa fa-sort"></i></th>
+                                <th class="text-right footable-sortable">Acciones<span class="footable-sort-indicator"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                                {% for medida in medidas %}
+
+                                    <tr data-id = "{{ medida.id }}">
+                                        <td>
+                                            {{ medida.nombre }}
+                                        </td>
+                                        <td>
+                                            {{ medida.cantidad }}
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="btn-group">
+                                                <button class="btn-warning btn btn-xs">Edit</button>
+                                                <button class="btn-danger btn btn-xs">Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </form>
+                        </tbody>
+                    </table>
+
+                    <a class="btn btn-success btn-new btn-xs" href="{{ path('medidas_new') }}">Nueva medida</a>
+                </div>
+                <div class="ibox-footer">
+
+                    <div class="clearfix">
+                        Total de registros: {{ medidas.getTotalItemCount }}
+                        <div class=" pull-right">
+                            {{ knp_pagination_render(medidas) }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{ form_start(delete_form, {'attr':{'id':'form-delete'}}) }}
+    {{ form_end(delete_form) }}
+
+    <div class="modal inmodal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content ">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="m-t-none m-b">Editar U/M</h4>
+                            <div id="progress-medida" class="progress progress-striped active  progress-mini hidden">
+                                <div class="progress-bar progress-bar-success" style="width: 100%;"></div>
+                            </div>
+                            <p>Debe escribir una unidad de medida que no exista.</p>
+                            <div id="test">{{ include('MiCocinaBundle:template:formulario.html.twig') }}</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 col-sm-offset-2">
+                            <button data-dismiss="modal" class="btn btn-white" type="button">Close</button>
+                            <button class="btn btn-success btn-update" type="submit">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/micocina/js/medida-actions.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+{% endblock javascripts %}
